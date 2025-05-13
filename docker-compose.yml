@@ -1,0 +1,19 @@
+x-basics: &basics
+  env_file:
+    - .env
+  restart: unless-stopped
+services:
+  redis:
+    image: "redis:latest"
+    container_name: db-memory
+    <<: *basics
+    command: redis-server --appendonly yes --replica-read-only no
+    networks:
+      core:
+        ipv4_address: 172.20.0.4
+    volumes:
+      - "~/volumes/redis/data:/data"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      retries: 3
+      timeout: 5s
