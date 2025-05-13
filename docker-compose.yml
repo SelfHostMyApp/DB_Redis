@@ -4,8 +4,7 @@ x-basics: &basics
   restart: unless-stopped
 services:
   redis:
-    image: "redis:latest"
-    container_name: db-memory
+    image: "redis:${REDIS_VERSION:-latest}"
     <<: *basics
     command: redis-server --appendonly yes --replica-read-only no
     networks:
