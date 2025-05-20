@@ -10,7 +10,7 @@ services:
     command: redis-server --appendonly yes --replica-read-only no
     networks:
       core:
-        ipv4_address: 172.20.0.4
+        ipv4_address: 172.20.0.10
     volumes:
       - "~/volumes/redis/data:/data"
     healthcheck:
