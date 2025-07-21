@@ -12,7 +12,7 @@ services:
       core:
         ipv4_address: 172.20.0.10
     volumes:
-      - "~/volumes/redis/data:/data"
+      - "./volumes/redis/data:/data"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       retries: 3
